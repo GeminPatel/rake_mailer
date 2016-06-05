@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Rake mailer by GeminPatel</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Rake mailer</h1>
+        <h2>rake g report!</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/GeminPatel/rake_mailer/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/GeminPatel/rake_mailer/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/GeminPatel/rake_mailer" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="rakemailer" class="anchor" href="#rakemailer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RakeMailer</h1>
+
+<p>Welcome to your new gem! This is a mailer gem to be used in rake tasks.
+Please see the usage section for simple setup instructions and how to use this gem.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">gem</span> <span class="pl-s"><span class="pl-pds">'</span>rake_mailer<span class="pl-pds">'</span></span></pre></div>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install rake_mailer
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="create-a-rake_maileryml-in-config" class="anchor" href="#create-a-rake_maileryml-in-config" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create a rake_mailer.yml in config</h3>
+
+<pre><code>development:
+  from: 'gemin.patel61@gmail.com'
+  emails: ['arjun.verma@gmail.com', 'kamal.soni@gmail.com']
+  file_path: 'tmp/rake_mailer'
+</code></pre>
+
+<h3>
+<a id="sample-rake-task-will-now-look-like" class="anchor" href="#sample-rake-task-will-now-look-like" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sample Rake Task will now look like</h3>
+
+<pre><code>namespace :bug_fixes do
+  task test: :environment do
+    r = RakeMailer::FileWriter.new
+    users = User.all
+    r.file_writer("Total users found: #{users.count}")
+    r.close
+  end
+end
+</code></pre>
+
+<pre><code>  This will create a file 1465113400_bug_fixes:test.txt and mail it as an attachment. 
+  Email settings will be used from rake_mailer.yml
+  Must configure your application.rb or enviroments 'rb' files with action mailer setting.
+  During initialization you can pass in 1 optional parameter for emails. It will over ride the default email list of config file.
+</code></pre>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>We are looking forward for good contributors. Please check out our github page or mail us to get in touch.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
