@@ -40,6 +40,21 @@ Or install it yourself as:
         r.close
       end
     end
+
+### Action Mailer Setting:
+    Add code like below to your application.rb file:
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'example.com',
+      user_name:            '<username>',
+      password:             '<password>',
+      authentication:       'plain',
+      enable_starttls_auto: true  }
+
+    For more details visit: http://guides.rubyonrails.org/action_mailer_basics.html
+
   ```
   This will create a file 1465113400_bug_fixes:test.txt and mail it as an attachment. 
   Email settings will be used from rake_mailer.yml

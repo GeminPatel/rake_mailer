@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Mail a report by mail about a rake task}
   spec.description   = %q{This can be used by rake task as a simple report generation tool.}
-  spec.homepage      = "https://github.com/GeminPatel/rake_mailer"
+  spec.homepage      = "http://geminpatel.github.io/rake_mailer/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
@@ -24,9 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "guard"
   spec.add_development_dependency "guard-rspec"
-  spec.add_development_dependency "pry"
-  spec.add_development_dependency "pry-remote"
-  spec.add_development_dependency "pry-nav"
   spec.add_development_dependency "coveralls"
   spec.add_development_dependency "actionmailer"
   end
