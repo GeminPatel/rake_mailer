@@ -1,7 +1,7 @@
 require "rake_mailer/version"
 require 'rubygems'
 require 'action_mailer'
-require File.expand_path('../rake_mailer/app/mailers/mail_it')
+require "rake_mailer/mail_it"
 require 'fileutils'
 
 module RakeMailer
@@ -10,7 +10,7 @@ module RakeMailer
       @rake_mailer_constants = YAML.load_file("#{Rails.root}/config/rake_mailer.yml")[Rails.env]
       @from = @rake_mailer_constants['from']
       @emails = emails || @rake_mailer_constants['emails']
-      @subject = "Rake Mailer:: Report for #{Rake.application.top_level_tasks.first}"
+      @subject = "[Rake Mailer] Report for #{Rake.application.top_level_tasks.first}"
       config_file_path = @rake_mailer_constants['file_path']
       if (config_file_path.nil? || (config_file_path.is_a? String))
         @filename = Time.now.to_i.to_s + "_#{Rake.application.top_level_tasks.first}" + '.txt'
@@ -35,7 +35,7 @@ module RakeMailer
     private
     def send_email
       if @from.present? && @emails.present? && ((@from.is_a? String) || (@from.is_a? Array)) && ((@emails.is_a? String) || (@emails.is_a? Array))
-        MailIt.custom_text_email(@from, @emails, @file_location, @filename, @subject).deliver_now
+        RakeMailer::MailIt.custom_text_email(@from, @emails, @file_location, @filename, @subject).deliver_now
       end
     end
   end
