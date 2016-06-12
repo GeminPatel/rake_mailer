@@ -23,6 +23,16 @@ Or install it yourself as:
 
     $ gem install rake_mailer
 
+### Configuration Details:
+    'from'- It is compulsory. It must be a string.
+    'emails'- It is compulsory if a email has to be sent somewhere.
+        It can we a string or an array of strings
+    'file_path'- system path where the rake mailer can store its generated reports.
+        By default it uses tmp/rake_mailer in the app's root directory
+    'display_system_info'- By default it is set to true. If true it will send some 
+        system information in the body of the email.
+
+
 ## Usage
 
 ### Create a rake_mailer.yml in config
@@ -30,6 +40,7 @@ Or install it yourself as:
       from: 'gemin.patel61@gmail.com'
       emails: ['arjun.verma@gmail.com', 'kamal.soni@gmail.com']
       file_path: 'tmp/rake_mailer'
+      display_system_info: true
 
 ### Sample Rake Task will now look like
     namespace :bug_fixes do
