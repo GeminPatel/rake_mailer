@@ -19,11 +19,13 @@ module RakeMailer
       begin
         output = %x(free)
         s << "Total Memory: #{output.split(" ")[7]}\n"
-        s << "User Memory: #{output.split(" ")[8]}\n"
+        s << "Used Memory: #{output.split(" ")[8]}\n"
         s << "Free Memory: #{output.split(" ")[9]}\n"
       rescue
       end
-      s << "pfa\n"
+      s << "\npfa\n"
+      s << "\n\nregards,\n"
+      s << "Rake Mailer,\n"
       s
     end
   end
