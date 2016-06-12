@@ -7,18 +7,19 @@ require 'fileutils'
 module RakeMailer
   class FileWriter
     def initialize(emails = nil)
-      @rake_mailer_constants = YAML.load_file("#{Rails.root}/config/rake_mailer.yml")[Rails.env]
-      @from = @rake_mailer_constants['from']
-      @emails = emails || @rake_mailer_constants['emails']
-      @subject = "[Rake Mailer] Report for #{Rake.application.top_level_tasks.first}"
-      config_file_path = @rake_mailer_constants['file_path']
-      if (config_file_path.nil? || (config_file_path.is_a? String))
+      yml_file = YAML.load_file("#{Rails.root}/config/rake_mailer.yml")
+      if yml_file && yml_file[Rails.env]
+        @rake_mailer_constants = yml_file[Rails.env]
+        @from = @rake_mailer_constants['from']
+        @emails = emails || @rake_mailer_constants['emails']
+        @subject = "[Rake Mailer] Report for #{Rake.application.top_level_tasks.first}"
+        config_file_path = @rake_mailer_constants['file_path']      
         @filename = Time.now.to_i.to_s + "_#{Rake.application.top_level_tasks.first}" + '.txt'
         FileUtils::mkdir_p(config_file_path || 'tmp/rake_mailer')
         @file_location = File.join(Rails.root, (config_file_path || 'tmp/rake_mailer'), @filename)
-        @file = open(@file_location, 'w')
+        @file = open(@file_location, 'w')      
       else
-        puts 'ERROR: gem rake_mailer => configuration file is incorrect'
+        raise 'ERROR: gem rake_mailer => configuration file is incorrect'
       end
     end
 
@@ -34,7 +35,7 @@ module RakeMailer
 
     private
     def send_email
-      if @from.present? && @emails.present? && ((@from.is_a? String) || (@from.is_a? Array)) && ((@emails.is_a? String) || (@emails.is_a? Array))
+      if @from.present? && @emails.present? && (@from.is_a? String) && ((@emails.is_a? String) || (@emails.is_a? Array))
         RakeMailer::MailIt.custom_text_email(@from, @emails, @file_location, @filename, @subject).deliver_now
       end
     end
