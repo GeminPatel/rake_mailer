@@ -1,7 +1,6 @@
 # RakeMailer
 
 ## Badges
-[![Coverage Status](https://coveralls.io/repos/github/GeminPatel/rake_mailer/badge.svg?branch=master)](https://coveralls.io/github/GeminPatel/rake_mailer?branch=master)
 [![Gem Version](https://badge.fury.io/rb/rake_mailer.svg)](https://badge.fury.io/rb/rake_mailer)
 
 Welcome to your new gem! This is a mailer gem to be used in rake tasks.
