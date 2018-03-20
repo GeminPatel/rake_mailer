@@ -1,9 +1,7 @@
 # RakeMailer
 
 ## Badges
-[![Gem Version](https://badge.fury.io/rb/rake_mailer.svg)](https://badge.fury.io/rb/rake_mailer)
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/1e212f6ddf651f14eaa1/maintainability)](https://codeclimate.com/github/GeminPatel/rake_mailer/maintainability)
+[![Gem Version](https://badge.fury.io/rb/rake_mailer.svg)](https://badge.fury.io/rb/rake_mailer) [![Maintainability](https://api.codeclimate.com/v1/badges/1e212f6ddf651f14eaa1/maintainability)](https://codeclimate.com/github/GeminPatel/rake_mailer/maintainability)
 
 Welcome to your new gem! This is a mailer gem to be used in rake tasks.
 Please see the usage section for simple setup instructions and how to use this gem.
